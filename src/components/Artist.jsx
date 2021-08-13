@@ -34,7 +34,7 @@ class Artist extends React.Component {
           async () => {
             let tracksResponse = await fetch(
               "https://striveschool-api.herokuapp.com/api/deezer/search?q=" +
-              artist.name,
+                artist.name,
               {
                 method: "GET",
                 headers,
@@ -98,7 +98,6 @@ class Artist extends React.Component {
               <Row className="row-cols-1 row-cols-sm-2 row-cols-lg-3 row-cols-xl-4 imgLinks py-3">
                 {this.state.songs?.map((song) => (
                   <AlbumCard song={song} key={song.id} />
-
                 ))}
               </Row>
             </div>
