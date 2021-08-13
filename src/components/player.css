@@ -91,7 +91,11 @@ footer > .row {
   left: 11px;
 }
 
-.footer .player-left .heart-icon:hover {
+/* .footer .player-left .heart-icon:hover {
+  color: red;
+} */
+
+.footer .player-left .red-heart {
   color: red;
 }
 

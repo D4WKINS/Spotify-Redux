@@ -1,20 +1,20 @@
-import React from "react";
-import Song from "./Song";
-import { Row, Button } from "react-bootstrap";
+import React from "react"
+import Song from "./Song"
+import { Row, Button } from "react-bootstrap"
 
 class Album extends React.Component {
   state = {
     album: {},
     songs: [],
-  };
+  }
 
   componentDidMount = async () => {
-    let albumId = this.props.match.params.id;
+    let albumId = this.props.match.params.id
 
     let headers = new Headers({
       "X-RapidAPI-Host": "deezerdevs-deezer.p.rapidapi.com",
       "X-RapidAPI-Key": "222902beabmshb95a65b737cead6p1f3ac9jsn23ced94c0d20",
-    });
+    })
 
     try {
       let response = await fetch(
@@ -23,19 +23,19 @@ class Album extends React.Component {
           method: "GET",
           headers,
         }
-      );
+      )
 
       if (response.ok) {
-        let album = await response.json();
+        let album = await response.json()
         this.setState({
           album,
           songs: album.tracks.data,
-        });
+        })
       }
     } catch (exception) {
-      console.log(exception);
+      console.log(exception)
     }
-  };
+  }
 
   render() {
     return (
@@ -76,17 +76,15 @@ class Album extends React.Component {
             <Row>
               <div className="col-md-10 mb-5" id="trackList">
                 {this.state.songs.map((song) => (
-                  <Song track={song} key={song.id} />
+                  <Song track={song} img={this.state.album.cover} key={song.id} />
                 ))}
-
-
               </div>
             </Row>
           </div>
         </Row>
       </div>
-    );
+    )
   }
 }
 
-export default Album;
+export default Album
