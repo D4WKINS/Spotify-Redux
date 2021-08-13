@@ -14,6 +14,8 @@ class Sidebar extends React.Component {
     searchInput: "",
   }
 
+
+
   render() {
     return (
       <div className="col-2">
@@ -87,7 +89,8 @@ class Sidebar extends React.Component {
               </div>
             </div>
           </div>
-
+          {/* {initialState.playlists.map(playlists => <div>{playlists.activePlaylist}
+          </div>)} */}
           <div className="nav-btn">
             <button className="btn" id="signup-btn" type="button">
               Sign Up
