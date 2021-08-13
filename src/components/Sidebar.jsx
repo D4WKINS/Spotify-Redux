@@ -1,10 +1,14 @@
 import React from "react";
 import { Link, withRouter } from "react-router-dom";
+import { initialState } from "../redux/store/index.js"
+// const mapStateToProps = (state) => state
 
 class Sidebar extends React.Component {
   state = {
     searchInput: "",
   };
+
+
 
   render() {
     return (
@@ -85,7 +89,8 @@ class Sidebar extends React.Component {
               </div>
             </div>
           </div>
-
+          {/* {initialState.playlists.map(playlists => <div>{playlists.activePlaylist}
+          </div>)} */}
           <div className="nav-btn">
             <button className="btn" id="signup-btn" type="button">
               Sign Up
@@ -96,7 +101,7 @@ class Sidebar extends React.Component {
             <a href="/">Cookie Policy</a> |<a href="/"> Privacy</a>
           </div>
         </nav>
-      </div>
+      </div >
     );
   }
 }
