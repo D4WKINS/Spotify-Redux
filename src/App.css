@@ -20,6 +20,7 @@ body {
   align-items: flex-start;
   background-color: black;
   z-index: 1200;
+  margin-bottom: 82px;
 }
 
 .navbar.fixed-left .navbar-collapse .navbar-nav a {

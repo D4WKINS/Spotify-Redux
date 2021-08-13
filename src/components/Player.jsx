@@ -1,47 +1,62 @@
-import React from "react";
-import { Row } from "react-bootstrap";
+import React from "react"
+import { Container, Row, Col } from "react-bootstrap"
+import PlayerCard from "./PlayerCard.jsx"
+import "./player.css"
 
-const Player = () => (
-  <div className="container-fluid fixed-bottom bg-container pt-1">
-    <Row>
-      <div className="col-lg-10 offset-lg-2">
+const Player = (props) => {
+  return (
+    <Container fluid className="footer">
+      <footer>
         <Row>
-          <div className="col-6 col-md-4 col-lg-2 offset-3 offset-md-4 offset-lg-5 playerControls mt-1">
-            <Row>
-              <a href="/">
-                <img src="/playerbuttons/Shuffle.png" alt="shuffle" />
-              </a>
-              <a href="/">
-                <img src="/playerbuttons/Previous.png" alt="shuffle" />
-              </a>
-              <a href="/">
-                <img src="/playerbuttons/Play.png" alt="shuffle" />
-              </a>
-              <a href="/">
-                <img src="/playerbuttons/Next.png" alt="shuffle" />
-              </a>
-              <a href="/">
-                <img src="/playerbuttons/Repeat.png" alt="shuffle" />
-              </a>
+          <Col xs={4}>
+            <PlayerCard />
+          </Col>
+          <Col
+            xs={4}
+            className="d-flex align-items-center justify-content-center flex-column">
+            <Row className="justify-content-center align-content-center">
+              <Col className="player-buttons justify-content-between">
+                <IconButton class="fas fa-random" />
+                <IconButton class="fas fa-step-backward wider-icon" />
+                <button className="play-button">
+                  <i className="fas fa-play"></i>
+                </button>
+                <IconButton class="fas fa-step-forward wider-icon" />
+                <IconButton class="fas fa-redo-alt" />
+              </Col>
             </Row>
-          </div>
-        </Row>
-        <Row className="justify-content-center playBar py-3">
-          <div className="col-8 col-md-6">
-            <div id="progress">
-              <div
-                className="progress-bar"
-                role="progressbar"
-                aria-valuenow={0}
-                aria-valuemin={0}
-                aria-valuemax={100}
-              ></div>
+            <Row className="w-100 timeline">
+              <Col className="d-flex align-items-center">
+                <div className="player-time">0:00</div>
+                <div className="col px-2">
+                  <div className="player-bar"></div>
+                </div>
+                <div className="player-time">0:00</div>
+              </Col>
+            </Row>
+          </Col>
+          <Col
+            xs={4}
+            className="d-flex justify-content-end align-items-center player-right-section">
+            <IconButton class="fas fa-align-justify" />
+            <IconButton class="fas fa-desktop" />
+            <div className="d-flex align-items-center volume-bar">
+              <IconButton class="fas fa-volume-up" />
+              <div className="player-volume"></div>
             </div>
-          </div>
+          </Col>
         </Row>
-      </div>
-    </Row>
-  </div>
-);
+      </footer>
+    </Container>
+  )
+}
 
-export default Player;
+export default Player
+
+const IconButton = (props) => {
+  return (
+    <button>
+      <i className={props.class}></i>
+    </button>
+  )
+}

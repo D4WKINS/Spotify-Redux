@@ -1,18 +1,25 @@
-import React from "react";
-import { Link, withRouter } from "react-router-dom";
+import React from "react"
+import { Link, withRouter } from "react-router-dom"
+import { fetchSearch } from "../redux/actions/api"
+import { connect } from "react-redux"
+
+const mapStateToProps = (state) => state
+
+const mapDispatchToProps = (dispatch) => ({
+  search: (query) => dispatch(fetchSearch(query)),
+})
 
 class Sidebar extends React.Component {
   state = {
     searchInput: "",
-  };
+  }
 
   render() {
     return (
       <div className="col-2">
         <nav
           className="navbar navbar-expand-md navbar-white bg-navbar fixed-left justify-content-between"
-          id="sidebar"
-        >
+          id="sidebar">
           <div className="nav-container">
             <Link to="/" className="navbar-brand">
               <img
@@ -29,8 +36,7 @@ class Sidebar extends React.Component {
               data-target="#navbarNavAltMarkup"
               aria-controls="navbarNavAltMarkup"
               aria-expanded="false"
-              aria-label="Toggle navigation"
-            >
+              aria-label="Toggle navigation">
               <span className="navbar-toggler-icon"></span>
             </button>
             <div className="collapse navbar-collapse" id="navbarNavAltMarkup">
@@ -43,8 +49,8 @@ class Sidebar extends React.Component {
                   </li>
                   <li>
                     <Link to="/" className="nav-item nav-link">
-                      <i className="fas fa-book-open fa-lg"></i>&nbsp; Your
-                      Library
+                      <i className="fas fa-book-open fa-lg"></i>
+                      &nbsp; Your Library
                     </Link>
                   </li>
                   {this.props.location.pathname === "/" && (
@@ -65,16 +71,12 @@ class Sidebar extends React.Component {
                         />
                         <div
                           className="input-group-append"
-                          style={{ marginBottom: "4%" }}
-                        >
+                          style={{ marginBottom: "4%" }}>
                           <button
                             className="btn btn-outline-secondary btn-sm"
                             type="button"
                             id="button-addon1"
-                            onClick={() =>
-                              this.props.search(this.state.searchInput)
-                            }
-                          >
+                            onClick={() => this.props.search(this.state.searchInput)}>
                             GO
                           </button>
                         </div>
@@ -97,8 +99,8 @@ class Sidebar extends React.Component {
           </div>
         </nav>
       </div>
-    );
+    )
   }
 }
 
-export default withRouter(Sidebar);
+export default connect(mapStateToProps, mapDispatchToProps)(withRouter(Sidebar))

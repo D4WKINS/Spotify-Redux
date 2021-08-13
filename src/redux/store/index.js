@@ -7,27 +7,28 @@ import thunk from "redux-thunk"
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose
 
 export const initialState = {
-    playlists: {
-        activePlaylist: [],
-    },
+  playlists: {
+    activePlaylist: [],
+  },
 
-    likes: [],
+  likes: [],
 
-    api: {
-        albums: {},
-        artists: {},
-        songs: {},
-    },
+  api: {
+    albums: {},
+    artists: {},
+    search: {},
+    query: "",
+  },
 }
 
 const mainReducer = combineReducers({
-    playlists: playlistReducer,
-    api: apiReducer,
-    likes: likesReducer,
+  playlists: playlistReducer,
+  api: apiReducer,
+  likes: likesReducer,
 })
 
 export const configureStore = createStore(
-    mainReducer,
-    initialState,
-    composeEnhancers(applyMiddleware(thunk))
+  mainReducer,
+  initialState,
+  composeEnhancers(applyMiddleware(thunk))
 )
